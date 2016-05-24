@@ -13,7 +13,9 @@ router.map({
     component: require('./components/main')
   },
   '/article/1': {
-    component: require('./components/article')
+    component: function (resolve) {
+      require(['./components/article'], resolve)
+    }
   }
 })
 

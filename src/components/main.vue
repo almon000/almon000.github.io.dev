@@ -3,3 +3,7 @@
     p Hello world!
     a(v-link="{ path: '/article/1' }") wocao
 </template>
+
+<style lang="scss">
+
+</style>
