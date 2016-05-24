@@ -5,17 +5,15 @@ import App from './App'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  history: true
+  hashbang: false
 })
 
 router.map({
   '/': {
     component: require('./components/main')
   },
-  '/article/1': {
-    component: function (resolve) {
-      require(['./components/article'], resolve)
-    }
+  '/article/:postId': {
+    component: require('./components/article')
   }
 })
 

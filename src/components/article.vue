@@ -23,8 +23,13 @@
       jq('#markdown a').each(function () {
         jq(this).click(function () {
           let url = jq(this).attr('href')
-          if (!url.startsWith('http') & !url.startsWith('#')) {
-            jq(this).attr('href', '#')
+          if (url.startsWith('http')) {
+            return
+          } else if (url.startsWith('#')) {
+            jq(this).attr('href', 'javascript:void(0);')
+            jq('html,body').animate({ scrollTop: jq(url).offset().top }, 500)
+          } else {
+            jq(this).attr('href', 'javascript:void(0);')
             router.go(url)
           }
         })
