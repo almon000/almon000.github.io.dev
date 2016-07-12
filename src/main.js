@@ -12,7 +12,10 @@ router.map({
   '/': {
     component: require('./components/main')
   },
-  '/article/:postId': {
+  '/post': {
+    component: require('./components/post')
+  },
+  '/post/:post_id': {
     component: require('./components/article')
   }
 })
