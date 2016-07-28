@@ -15,8 +15,11 @@ router.map({
   '/post': {
     component: require('./components/post')
   },
-  '/post/:post_id': {
+  '/article/:post_id': {
     component: require('./components/article')
+  },
+  '/tag/:tag_name': {
+    component: require('./components/tag')
   }
 })
 

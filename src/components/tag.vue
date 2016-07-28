@@ -1,6 +1,6 @@
 <template lang="jade">
-  div.post.flex-column
-    h1.title Posts
+  div.tag.flex-column
+    h1.title Tag: {{ tag }}
     a(v-for="articleName in articleIndex"
       v-link="{ path: '/article/' + articleName }") {{ articleName }}
 </template>
@@ -11,12 +11,13 @@
   export default {
     data () {
       return {
-        articleIndex: []
+        articleIndex: [],
+        tag: this.$route.params.tag_name
       }
     },
     ready () {
       for (let item in index) {
-        if (index[item].class === 'post') this.articleIndex.push(item)
+        if (index[item].tags.indexOf(this.tag) !== -1) this.articleIndex.push(item)
       }
       this.articleIndex.sort(function (x, y) {
         return index[x].date < index[y].date

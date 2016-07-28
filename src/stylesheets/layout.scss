@@ -7,8 +7,16 @@
   flex-direction: column;
 }
 
-.flex-center {
+.flex-center-justify {
   @extend .flex;
   justify-content: center;
+}
+.flex-center-align {
+  @extend .flex;
   align-items: center;
+}
+.flex-center {
+  @extend .flex;
+  @extend .flex-center-align;
+  @extend .flex-center-justify;
 }

@@ -1,0 +1,14 @@
+{
+"1": {
+  "title": "Markdown 效果演示",
+  "date": "2016-06-28",
+  "class": "post",
+  "tags": ["其它", "测试1", "测试2"]
+},
+"Hello World": {
+  "title": "Hello World",
+  "date": "2016-05-26",
+  "class": "post",
+  "tags": ["其它", "测试2"]
+}
+}
