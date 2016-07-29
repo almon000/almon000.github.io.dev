@@ -3,7 +3,7 @@
     p.title {{ head.title }}
     div.info.flex-center-align
       p.date {{ head.date }}
-      a.mark.flex-center(v-for="tag in head.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
+      a.tag.flex-center(v-for="tag in head.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
   div#markdown {{{ post }}}
   div#duoshuo
 </template>
@@ -11,6 +11,7 @@
 <script>
   import hljs from 'highlight.js'
   import jq from 'jquery'
+  import index from '../articles-index.json'
 
   export default {
     route: {
@@ -20,14 +21,23 @@
     },
     data () {
       return {
-        post: require('../components/articles/' + this.$route.params.post_id + '.md'),
-        head: {}
+        // 文章唯一标识，以md文件名为准
+        postId: this.$route.params.post_id
+      }
+    },
+    computed: {
+      // 文章内容
+      post () {
+        return require('../components/articles/' + this.postId + '.md')
+      },
+      head () {
+        return index[this.postId]
       }
     },
     methods: {
       initDuoshuo () {
         let ds = document.createElement('div')
-        ds.setAttribute('data-thread-key', this.$route.params.post_id)
+        ds.setAttribute('data-thread-key', this.postId)
         ds.setAttribute('data-url', window.location.href)
         ds.setAttribute('data-author-key', 'almon000')
         if (typeof (window.DUOSHUO) === 'undefined') {
@@ -45,8 +55,6 @@
       }
     },
     ready () {
-      // 读取文章头信息
-      this.head = JSON.parse(this.post.slice(this.post.indexOf('{'), this.post.indexOf('}') + 1))
       // 加载多说评论
       this.initDuoshuo()
       // 代码高亮
@@ -94,7 +102,7 @@
       .date {
         margin-top: 20px;
       }
-      .mark {
+      .tag {
         color: black;
         height: 18px;
         padding: 0 4px;
