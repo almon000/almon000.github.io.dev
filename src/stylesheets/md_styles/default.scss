@@ -8,9 +8,6 @@
       margin-top: 1em;
   }
 
-  h1, h2, h3, h4, h5 {
-      font-family: Georgia, Palatino, serif;
-  }
   h1, h2, h3, h4, h5, p , dl{
       margin-bottom: 16px;
       padding: 0;
@@ -115,20 +112,6 @@
   code {
       color: #666555;
   }
-
-
-  /** markdown preview plus 对于代码块的处理有些问题, 所以使用统一的颜色 */
-  /*code .keyword {
-    color: #8959a8;
-  }
-
-  code .number {
-    color: #f5871f;
-  }
-
-  code .comment {
-    color: #998
-  }*/
 
   aside {
       display: block;

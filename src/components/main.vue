@@ -1,6 +1,6 @@
 <template lang="jade">
   div.main.flex-column.flex-center
-    h1 Hello world!
+    img.almon(src="../assets/img/almon.png")
     div.fields.flex
       a(v-link="{ path: '/post' }") Posts
       a Demos
@@ -17,11 +17,18 @@ export default {
     height: 100vh;
 
     .fields {
-      margin-left: 10px;
+      width: 490px;
+      margin-top: 30px;
+      justify-content: space-around;
+
       a {
-        margin-right: 10px;
         color: black;
-        &:hover { color: lighten(black, 30%); }
+        font-size: 24px;
+
+        &:hover {
+          color: lighten(black, 30%);
+          text-decoration: underline;
+        }
       }
     }
   }

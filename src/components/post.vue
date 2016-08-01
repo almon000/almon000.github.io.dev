@@ -26,4 +26,7 @@
 </script>
 
 <style lang="scss" scoped>
+  .post {
+    margin: 30px 300px;
+  }
 </style>

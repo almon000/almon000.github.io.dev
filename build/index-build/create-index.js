@@ -13,7 +13,7 @@ fs.unlink(config.outPath, function() {
       fs.read(fd, buf, 0, buf.length, 0, function(err, bytes) {
         if(bytes > 0) {
           let str = buf.slice(0, bytes).toString()
-          str = str.slice(str.indexOf('{'), str.indexOf('}') + 1)
+          str = str.slice(str.indexOf('{'), str.lastIndexOf('}') + 1)
           fs.open(config.outPath, 'a+', function (err, fd2) {
             let divider = config.system === 'win32' ? '\\' : '/'
             fs.write(fd2, '"' + pathname.slice(pathname.lastIndexOf(divider)+1, pathname.indexOf('.md')) + '": ' + str + ',\r\n', function () {

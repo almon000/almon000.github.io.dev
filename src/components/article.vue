@@ -1,11 +1,13 @@
 <template lang="jade">
-  div#header
-    p.title {{ head.title }}
-    div.info.flex-center-align
-      p.date {{ head.date }}
-      a.tag.flex-center(v-for="tag in head.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
-  div#markdown {{{ post }}}
-  div#duoshuo
+  div.article
+    div.head-img
+    div#header
+      p.title {{ head.title }}
+      div.info.flex-center-align
+        p.date {{ head.date }}
+        a.tag.flex-center(v-for="tag in head.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
+    div#markdown {{{ article }}}
+    div#duoshuo
 </template>
 
 <script>
@@ -22,22 +24,23 @@
     data () {
       return {
         // 文章唯一标识，以md文件名为准
-        postId: this.$route.params.post_id
+        articleId: this.$route.params.article_id
       }
     },
     computed: {
       // 文章内容
-      post () {
-        return require('../components/articles/' + this.postId + '.md')
+      article () {
+        return require('../components/articles/' + this.articleId + '.md')
       },
       head () {
-        return index[this.postId]
+        return index[this.articleId]
       }
     },
     methods: {
+      // 多说评论框初始化
       initDuoshuo () {
         let ds = document.createElement('div')
-        ds.setAttribute('data-thread-key', this.postId)
+        ds.setAttribute('data-thread-key', this.articleId)
         ds.setAttribute('data-url', window.location.href)
         ds.setAttribute('data-author-key', 'almon000')
         if (typeof (window.DUOSHUO) === 'undefined') {
@@ -52,11 +55,32 @@
           window.DUOSHUO.EmbedThread(ds)
           jq('#duoshuo').append(ds)
         }
+      },
+      // 头图初始化
+      initHeadImg () {
+        if (typeof (this.head.img) !== 'undefined') {
+          jq('.head-img').css({
+            'backgroundImage':
+              typeof (this.head.img.url) === 'undefined' ? '' : 'url(' + this.head.img.url + ')',
+            'backgroundRepeat':
+              typeof (this.head.img.repeat) === 'undefined' ? '' : this.head.img.repeat ? 'repeat' : 'no-repeat',
+            'backgroundSize':
+              typeof (this.head.img.size) === 'undefined' ? '' : this.head.img.size,
+            'backgroundPosition':
+              typeof (this.head.img.position) === 'undefined' ? ''
+              : (typeof (this.head.img.position[0]) === 'undefined' ? '' : this.head.img.position[0] + 'px ') +
+                (typeof (this.head.img.position[1]) === 'undefined' ? '' : this.head.img.position[1] + 'px')
+          })
+        } else {
+          jq('.head-img').css({'height': 0})
+        }
       }
     },
     ready () {
       // 加载多说评论
       this.initDuoshuo()
+      // 头图
+      this.initHeadImg()
       // 代码高亮
       jq('pre > code').each(function () {
         hljs.highlightBlock(this)
@@ -86,28 +110,42 @@
 <style lang="scss">
   @import '../stylesheets/hljs_styles/darkula.css';
   @import '../stylesheets/md_styles/default';
-
-  #header {
-    border-bottom: 1px solid #efeaea;
-    .title{
-      margin-bottom: 0;
-      font-size: 36px;
+  .article {
+    .head-img {
+      width: 100%;
+      height: 500px;
     }
-    .info {
-      p, a {
-        font-size: 14px;
-        margin-right: 10px;
-        height: 20px;
+
+    #header, #markdown, #duoshuo {
+      margin: 0 100px;
+    }
+
+    #header {
+      border-bottom: 1px solid #efeaea;
+
+      .title {
+        margin-bottom: 0;
+        font-size: 36px;
       }
-      .date {
-        margin-top: 20px;
-      }
-      .tag {
-        color: black;
-        height: 18px;
-        padding: 0 4px;
-        border: 1px solid #c3c3c3;
-        border-radius: 4px;
+
+      .info {
+        p, a {
+          font-size: 14px;
+          margin-right: 10px;
+          height: 20px;
+        }
+
+        .date {
+          margin-top: 20px;
+        }
+
+        .tag {
+          color: black;
+          height: 18px;
+          padding: 0 4px;
+          border: 1px solid #c3c3c3;
+          border-radius: 4px;
+        }
       }
     }
   }
