@@ -116,10 +116,6 @@
       height: 500px;
     }
 
-    #header, #markdown, #duoshuo {
-      margin: 0 100px;
-    }
-
     #header {
       border-bottom: 1px solid #efeaea;
 
@@ -147,6 +143,10 @@
           border-radius: 4px;
         }
       }
+    }
+
+    #header, #markdown, #duoshuo {
+      margin: 0 200px;
     }
   }
 </style>

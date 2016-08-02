@@ -1,10 +1,11 @@
 <template lang="jade">
-  div.main.flex-column.flex-center
-    img.almon(src="../assets/img/almon.png")
-    div.fields.flex
-      a(v-link="{ path: '/post' }") Posts
-      a Demos
-      a About
+  div.main
+    div.almon.flex-column.flex-center-align
+      p.logo A.L.M.O.N
+      div.nav.flex
+        a(v-link="{ path: '/post' }") Posts
+        a Demos
+        a About
 </template>
 
 <script>
@@ -15,19 +16,36 @@ export default {
 <style lang="scss" scoped>
   .main {
     height: 100vh;
+    width: 100vw;
+    background-image: url('http://ob54s56n6.bkt.clouddn.com/almon-summer.jpg');
 
-    .fields {
-      width: 490px;
-      margin-top: 30px;
-      justify-content: space-around;
+    .almon {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.15);
+      // border-radius: 10px;
 
-      a {
-        color: black;
-        font-size: 24px;
+      .logo {
+        color: white;
+        margin: 10px auto;
+        font-size: 48px;
+      }
 
-        &:hover {
-          color: lighten(black, 30%);
-          text-decoration: underline;
+      .nav {
+        width: 300px;
+        margin: 10px auto;
+        justify-content: space-around;
+
+        a {
+          color: white;
+          font-size: 18px;
+
+          &:hover {
+            color: darken(white, 20%);
+            text-decoration: underline;
+          }
         }
       }
     }

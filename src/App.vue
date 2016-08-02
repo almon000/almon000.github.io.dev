@@ -4,7 +4,6 @@
 </template>
 
 <script>
-  require('normalize.css')
 </script>
 
 <style lang="scss">
