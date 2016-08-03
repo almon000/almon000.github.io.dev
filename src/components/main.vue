@@ -1,8 +1,8 @@
 <template lang="jade">
   div.main
-    div.almon.flex-column.flex-center-align
+    div.almon.flex-column
       p.logo A.L.M.O.N
-      div.nav.flex
+      div.nav.flex-column
         a(v-link="{ path: '/post' }") Posts
         a Demos
         a About
@@ -34,17 +34,15 @@ export default {
       }
 
       .nav {
-        width: 300px;
-        margin: 10px auto;
-        justify-content: space-around;
-
         a {
+          width: 300px;
           color: white;
           font-size: 18px;
+          text-align: center;
+          line-height: 1.5;
 
           &:hover {
-            color: darken(white, 20%);
-            text-decoration: underline;
+            background-color: darken(white, 80%);
           }
         }
       }
