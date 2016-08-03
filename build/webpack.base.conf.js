@@ -24,6 +24,10 @@ module.exports = {
   resolveLoader: {
     fallback: [path.join(__dirname, '../node_modules')]
   },
+  externals: {
+    zepto: 'Zepto',
+    $: '$'
+  },
   module: {
     preLoaders: [
       {

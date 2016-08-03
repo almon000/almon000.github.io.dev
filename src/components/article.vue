@@ -12,8 +12,11 @@
 
 <script>
   import hljs from 'highlight.js'
-  import jq from 'jquery'
+  // import jq from 'jquery'
+  import jq from '$'
   import index from '../articles-index.json'
+
+  // var jq = window.Zepto
 
   export default {
     route: {
