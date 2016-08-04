@@ -3,7 +3,8 @@ html {
   font-family: "Consolas", "Microsoft YaHei"  !important;
 }
 body {
-  background-color: $color-bg;
+  // background-color: $color-bg;
+  background: url('./assets/img/bg.jpg');
 }
 a {
   text-decoration: none;

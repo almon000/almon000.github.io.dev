@@ -8,4 +8,5 @@
 
 <style lang="scss">
   @import './stylesheets/base';
+  @import './stylesheets/global';
 </style>

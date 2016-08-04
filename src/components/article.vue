@@ -1,6 +1,7 @@
 <template lang="jade">
   div.article
     div.head-img
+      img(v-bind:src="head.img.url")
     div#header
       p.title {{ head.title }}
       div.info.flex-center-align
@@ -59,17 +60,8 @@
       // 头图初始化
       initHeadImg () {
         if (typeof (this.head.img) !== 'undefined') {
-          jq('.head-img').css({
-            'backgroundImage':
-              typeof (this.head.img.url) === 'undefined' ? '' : 'url(' + this.head.img.url + ')',
-            'backgroundRepeat':
-              typeof (this.head.img.repeat) === 'undefined' ? '' : this.head.img.repeat ? 'repeat' : 'no-repeat',
-            'backgroundSize':
-              typeof (this.head.img.size) === 'undefined' ? '' : this.head.img.size,
-            'backgroundPosition':
-              typeof (this.head.img.position) === 'undefined' ? ''
-              : (typeof (this.head.img.position[0]) === 'undefined' ? '' : this.head.img.position[0] + 'px ') +
-                (typeof (this.head.img.position[1]) === 'undefined' ? '' : this.head.img.position[1] + 'px')
+          jq('.head-img img').css({
+            'marginTop': this.head.img.top
           })
         } else {
           jq('.head-img').css({'height': 0})
@@ -118,7 +110,12 @@
 
     .head-img {
       width: 100%;
-      height: 500px;
+      max-height: 500px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
     }
 
     #header {
@@ -152,7 +149,7 @@
     }
 
     #header, #markdown, #duoshuo {
-      margin: 20px 100px;
+      margin: 0 100px;
     }
 
     #markdown {

@@ -20,6 +20,8 @@ export default {
     height: 100vh;
     width: 100vw;
     background-image: url('http://ob54s56n6.bkt.clouddn.com/almon-summer.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
 
     .almon {
       position: absolute;
