@@ -12,11 +12,8 @@
 
 <script>
   import hljs from 'highlight.js'
-  // import jq from 'jquery'
   import jq from '$'
   import index from '../articles-index.json'
-
-  // var jq = window.Zepto
 
   export default {
     route: {
@@ -113,7 +110,12 @@
 <style lang="scss">
   @import '../stylesheets/hljs_styles/darkula.css';
   @import '../stylesheets/md_styles/default';
+  @import '../stylesheets/base';
+
   .article {
+    background-color: $white;
+    margin: 60px 200px;
+
     .head-img {
       width: 100%;
       height: 500px;
@@ -123,6 +125,7 @@
       border-bottom: 1px solid #efeaea;
 
       .title {
+        padding-top: 20px;
         margin-bottom: 0;
         font-size: 36px;
       }
@@ -149,7 +152,13 @@
     }
 
     #header, #markdown, #duoshuo {
-      margin: 0 200px;
+      margin: 20px 100px;
+    }
+
+    #markdown {
+      img {
+        max-width: 100%;
+      }
     }
   }
 </style>

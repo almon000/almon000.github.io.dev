@@ -14,6 +14,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../stylesheets/base';
+
   .main {
     height: 100vh;
     width: 100vw;
@@ -42,7 +44,7 @@ export default {
           line-height: 1.5;
 
           &:hover {
-            background-color: darken(white, 80%);
+            background-color: $black;
           }
         }
       }
