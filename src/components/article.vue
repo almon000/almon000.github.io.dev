@@ -1,5 +1,6 @@
 <template lang="jade">
   div.article
+    navbar
     div.head-img
       img(v-bind:src="head.img.url")
     div#header
@@ -15,6 +16,7 @@
   import hljs from 'highlight.js'
   import jq from '$'
   import index from '../articles-index.json'
+  import navbar from './common/navbar.vue'
 
   export default {
     route: {
@@ -22,6 +24,7 @@
         return false
       }
     },
+    components: { navbar },
     data () {
       return {
         // 文章唯一标识，以md文件名为准

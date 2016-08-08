@@ -1,14 +1,17 @@
 <template lang="jade">
   div.post.flex-column
+    navbar
     h1.title Posts
     a(v-for="articleName in articleIndex"
-      v-link="{ path: '/article/' + articleName }") {{ articleName }}
+      v-link="{ path: '/post/' + articleName }") {{ articleName }}
 </template>
 
 <script>
   import index from '../articles-index.json'
+  import navbar from './common/navbar.vue'
 
   export default {
+    components: { navbar },
     data () {
       return {
         articleIndex: []
@@ -27,6 +30,6 @@
 
 <style lang="scss" scoped>
   .post {
-    margin: 30px 300px;
+    margin: 50px 300px;
   }
 </style>

@@ -2,10 +2,19 @@ html {
   font-size: 18px;
   font-family: "Consolas", "Microsoft YaHei"  !important;
 }
+
 body {
-  // background-color: $color-bg;
-  background: url('./assets/img/bg.jpg');
+  background-color: $color-bg;
 }
+
 a {
   text-decoration: none;
+}
+
+.v-link-active {
+  background-color: rgba(0, 0, 0, .7);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .7) !important;
+  }
 }
