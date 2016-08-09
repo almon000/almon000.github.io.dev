@@ -6,7 +6,7 @@
   "tags": ["其它", "测试2"],
   "img": {
     "url": "http://ob54s56n6.bkt.clouddn.com/helloworld.png",
-    "top": "-3%"
+    "position": ["0", "-31px"]
   }
 }
 -->

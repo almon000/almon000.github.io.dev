@@ -2,7 +2,6 @@
   div.article
     navbar
     div.head-img
-      img(v-bind:src="head.img.url")
     div#header
       p.title {{ head.title }}
       div.info.flex-center-align
@@ -63,9 +62,14 @@
       // 头图初始化
       initHeadImg () {
         if (typeof (this.head.img) !== 'undefined') {
-          jq('.head-img img').css({
-            'marginTop': this.head.img.top
-          })
+          if (typeof (this.head.img.url) !== 'undefined') {
+            jq('.head-img').css({'backgroundImage': 'url("' + this.head.img.url + '")'})
+          }
+          if (typeof (this.head.img.position) !== 'undefined') {
+            let posX = typeof (this.head.img.position[0]) === 'undefined' ? '' : this.head.img.position[0]
+            let posY = typeof (this.head.img.position[1]) === 'undefined' ? '' : this.head.img.position[1]
+            jq('.head-img').css({'backgroundPosition': posX + ' ' + posY})
+          }
         } else {
           jq('.head-img').css({'height': 0})
         }
@@ -109,17 +113,25 @@
 
   .article {
     background-color: $white;
-    margin: 60px 200px;
+    min-width: 800px;
+    margin: 56px 280px;
+
+    @media(max-width: 1360px) {
+      margin: 56px auto;
+      min-width: 0;
+      width: 800px;
+    }
+
+    @media(max-width: 800px) { width: auto; }
 
     .head-img {
       width: 100%;
-      max-height: 500px;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-      }
+      height: 500px;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
+
+    #header, #markdown, #duoshuo { margin: 0 100px; }
 
     #header {
       border-bottom: 1px solid #efeaea;
@@ -137,9 +149,7 @@
           height: 20px;
         }
 
-        .date {
-          margin-top: 20px;
-        }
+        .date { margin-top: 20px; }
 
         .tag {
           color: black;
@@ -148,16 +158,6 @@
           border: 1px solid #c3c3c3;
           border-radius: 4px;
         }
-      }
-    }
-
-    #header, #markdown, #duoshuo {
-      margin: 0 100px;
-    }
-
-    #markdown {
-      img {
-        max-width: 100%;
       }
     }
   }

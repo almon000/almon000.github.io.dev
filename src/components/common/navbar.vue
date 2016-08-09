@@ -1,6 +1,6 @@
 <template lang="jade">
     div.navbar.flex-center-align
-      p.flex.logo(v-link="{ path: '/', activeClass: 'v-link-active-nostyle' }") A.L.M.O.N
+      p.flex.logo(v-link="{ path: '/', activeClass: 'v-link-active-nostyle' }") A.L.M.O.N<sub>夏</sub>
       a.flex(v-link="{ path: '/post' }") Posts
       a.flex Demos
       a.flex About
@@ -27,10 +27,17 @@ export default {
       font-size: 48px;
       margin-left: 20px;
       margin-right: 20px;
+      width: 240px;
       height: 100%;
       align-items: flex-end;
       line-height: 0.9;
       cursor: pointer;
+
+      sub {
+        font-size: 14px;
+        margin-left: 4px;
+        margin-bottom: 14px;
+      }
     }
 
     a {
@@ -43,7 +50,6 @@ export default {
 
       &:hover {
         background-color: rgba(0, 0, 0, .5);
-
       }
     }
   }
