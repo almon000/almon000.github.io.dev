@@ -29,7 +29,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .post {
-    margin: 50px 300px;
-  }
+@import '../stylesheets/base';
 </style>
