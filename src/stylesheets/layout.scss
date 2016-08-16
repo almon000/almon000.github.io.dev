@@ -20,3 +20,17 @@
   @extend .flex-center-align;
   @extend .flex-center-justify;
 }
+
+.container {
+  background-color: $white;
+  min-width: 800px;
+  margin: 56px 280px;
+
+  @media(max-width: 1360px) {
+    margin: 56px auto;
+    min-width: 0;
+    width: 800px;
+  }
+
+  @media(max-width: 800px) { width: auto; }
+}

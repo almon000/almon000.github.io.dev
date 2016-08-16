@@ -1,5 +1,5 @@
 <template lang="jade">
-  div.post.flex-column
+  div.post.flex-column.container
     navbar
     h1.title Posts
     a(v-for="articleName in articleIndex"

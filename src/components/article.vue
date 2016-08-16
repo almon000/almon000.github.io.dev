@@ -1,14 +1,14 @@
 <template lang="jade">
-  div.article
+  div.article.container
     navbar
     div.head-img
-    div#header
+    div.header
       p.title {{ head.title }}
       div.info.flex-center-align
         p.date {{ head.date }}
         a.tag.flex-center(v-for="tag in head.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
-    div#markdown {{{ article }}}
-    div#duoshuo
+    div.markdown {{{ article }}}
+    div.duoshuo
 </template>
 
 <script>
@@ -50,13 +50,13 @@
           var timer = setInterval(function () {
             if (typeof (window.DUOSHUO) !== 'undefined') {
               window.DUOSHUO.EmbedThread(ds)
-              jq('#duoshuo').append(ds)
+              jq('.duoshuo').append(ds)
               clearInterval(timer)
             }
           }, 1000)
         } else {
           window.DUOSHUO.EmbedThread(ds)
-          jq('#duoshuo').append(ds)
+          jq('.duoshuo').append(ds)
         }
       },
       // 头图初始化
@@ -86,7 +86,7 @@
       })
       let el = this
       // 文章中的链接处理
-      jq('#markdown a').each(function () {
+      jq('.markdown a').each(function () {
         this.addEventListener('click', function () {
           let url = jq(this).attr('href')
           if (url.startsWith('/')) {
@@ -113,16 +113,6 @@
 
   .article {
     background-color: $white;
-    min-width: 800px;
-    margin: 56px 280px;
-
-    @media(max-width: 1360px) {
-      margin: 56px auto;
-      min-width: 0;
-      width: 800px;
-    }
-
-    @media(max-width: 800px) { width: auto; }
 
     .head-img {
       width: 100%;
@@ -131,18 +121,19 @@
       background-size: cover;
     }
 
-    #header, #markdown, #duoshuo { margin: 0 100px; }
+    .header, .markdown, .duoshuo { margin: 0 50px; }
 
-    #header {
+    .header {
+      color: #555555;
       border-bottom: 1px solid #efeaea;
 
       .title {
-        padding-top: 20px;
         margin-bottom: 0;
         font-size: 36px;
       }
 
       .info {
+
         p, a {
           font-size: 14px;
           margin-right: 10px;
@@ -152,7 +143,7 @@
         .date { margin-top: 20px; }
 
         .tag {
-          color: black;
+          color: #555555;
           height: 18px;
           padding: 0 4px;
           border: 1px solid #c3c3c3;

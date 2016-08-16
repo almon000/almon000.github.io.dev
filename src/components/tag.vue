@@ -1,14 +1,17 @@
 <template lang="jade">
-  div.tag.flex-column
+  div.tag.flex-column.container
+    navbar
     h1.title Tag: {{ tag }}
     a(v-for="articleName in articleIndex"
-      v-link="{ path: '/article/' + articleName }") {{ articleName }}
+      v-link="{ path: '/post/' + articleName }") {{ articleName }}
 </template>
 
 <script>
   import index from '../articles-index.json'
+  import navbar from './common/navbar.vue'
 
   export default {
+    components: { navbar },
     data () {
       return {
         articleIndex: [],
