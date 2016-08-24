@@ -1,9 +1,12 @@
 <template lang="jade">
-    div.navbar.flex-center-align
-      p.flex.logo(v-link="{ path: '/', activeClass: 'v-link-active-nostyle' }") A.L.M.O.N<sub>夏</sub>
-      a.flex(v-link="{ path: '/post' }") Posts
-      a.flex Demos
-      a.flex About
+    div.navbar.flex-center-justify
+      span.flex-center-align.logo(v-link="{ path: '/', activeClass: 'v-link-active-nostyle' }") A.L.M.O.N
+      a.flex-center-justify(v-link="{ path: '/post' }")
+        p 文章
+      a.flex-center-justify
+        p 项目
+      a.flex-center-justify
+        p 关于
 </template>
 
 <script>
@@ -20,36 +23,41 @@ export default {
     right: 0;
     top: 0;
     height: 56px;
-    background-color: transparentize($black, 0.7);
+    background-color: $white;
+
+    @media(max-width: 1000px) {
+      justify-content: flex-start;
+    }
 
     .logo {
-      color: white;
+      position: absolute;
+      color: #555555;
       font-size: 48px;
       margin-left: 20px;
-      margin-right: 20px;
+      margin-right: 120px;
       width: 240px;
       height: 100%;
-      align-items: flex-end;
-      line-height: 0.9;
       cursor: pointer;
+      left: 0;
 
-      sub {
-        font-size: 14px;
-        margin-left: 4px;
-        margin-bottom: 14px;
+      @media(max-width: 1000px) {
+        position: static;
+        left: auto;
       }
     }
 
     a {
       width: 150px;
-      height: 100%;
-      color: white;
+      height: 50px;
+      color: gray;
       font-size: 18px;
-      padding-left: 10px;
-      align-items: flex-end;
 
       &:hover {
-        background-color: rgba(0, 0, 0, .5);
+        color: #555555;
+      }
+
+      p {
+        margin-top: 20px;
       }
     }
   }

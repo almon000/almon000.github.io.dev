@@ -1,23 +1,40 @@
 <template lang="jade">
-  div.main
-    navbar
+  div.main.flex-column.container
+    h2.title 最近更新
+    article-preview(v-bind:article-index="recentIndex")
 </template>
 
 <script>
-import navbar from './common/navbar.vue'
-export default {
-  components: { navbar }
-}
+  import articlePreview from './common/article-preview'
+  import index from '../articles-index.json'
+
+  export default {
+    components: { articlePreview },
+    data () {
+      return {
+        recentIndex: []
+      }
+    },
+    ready () {
+      for (let item in index) {
+        if (item > 5) break
+        this.recentIndex.push(index[item])
+        this.recentIndex.sort(function (x, y) {
+          return new Date(x.mtime) > new Date(y.mtime)
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
   @import '../stylesheets/base';
-
   .main {
-    height: 100vh;
-    width: 100vw;
-    background-image: url('http://ob54s56n6.bkt.clouddn.com/almon-summer.jpg');
-    background-repeat:no-repeat;
-    background-size: cover;
+    .title {
+      color: #555555;
+      width: 100%;
+      border-bottom: 1px solid #efeaea;
+      padding-bottom: 10px;
+    }
   }
 </style>

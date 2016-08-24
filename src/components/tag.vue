@@ -1,33 +1,44 @@
 <template lang="jade">
   div.tag.flex-column.container
-    navbar
-    h1.title Tag: {{ tag }}
-    a(v-for="articleName in articleIndex"
-      v-link="{ path: '/post/' + articleName }") {{ articleName }}
+    h2.title Tag: {{ tag }}
+    article-preview(v-bind:article-index="tagIndex")
 </template>
 
 <script>
   import index from '../articles-index.json'
-  import navbar from './common/navbar.vue'
+  import articlePreview from './common/article-preview'
 
   export default {
-    components: { navbar },
+    route: {
+      canReuse () {
+        return false
+      }
+    },
+    components: { articlePreview },
     data () {
       return {
-        articleIndex: [],
+        tagIndex: [],
         tag: this.$route.params.tag_name
       }
     },
     ready () {
       for (let item in index) {
-        if (index[item].tags.indexOf(this.tag) !== -1) this.articleIndex.push(item)
+        if (index[item].tags.indexOf(this.tag) !== -1) this.tagIndex.push(index[item])
       }
-      this.articleIndex.sort(function (x, y) {
-        return index[x].date < index[y].date
+      this.tagIndex.sort(function (x, y) {
+        return x.date < y.date
       })
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  @import '../stylesheets/base';
+
+  .title {
+    color: #555555;
+    width: 100%;
+    border-bottom: 1px solid #efeaea;
+    padding-bottom: 10px;
+  }
 </style>

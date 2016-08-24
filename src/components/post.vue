@@ -1,33 +1,38 @@
 <template lang="jade">
   div.post.flex-column.container
-    navbar
-    h1.title Posts
-    a(v-for="articleName in articleIndex"
-      v-link="{ path: '/post/' + articleName }") {{ articleName }}
+    h2.title 文章
+    article-preview(v-bind:article-index='postIndex')
 </template>
 
 <script>
   import index from '../articles-index.json'
-  import navbar from './common/navbar.vue'
+  import articlePreview from './common/article-preview'
 
   export default {
-    components: { navbar },
+    components: { articlePreview },
     data () {
       return {
-        articleIndex: []
+        postIndex: []
       }
     },
     ready () {
       for (let item in index) {
-        if (index[item].class === 'post') this.articleIndex.push(item)
+        if (index[item].class === 'post') this.postIndex.push(index[item])
       }
-      this.articleIndex.sort(function (x, y) {
-        return index[x].date < index[y].date
+      this.postIndex.sort(function (x, y) {
+        return x.date < y.date
       })
     }
   }
 </script>
 
 <style lang="scss" scoped>
-@import '../stylesheets/base';
+  @import '../stylesheets/base';
+
+  .title {
+    color: #555555;
+    width: 100%;
+    border-bottom: 1px solid #efeaea;
+    padding-bottom: 10px;
+  }
 </style>

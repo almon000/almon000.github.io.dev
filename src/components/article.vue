@@ -1,6 +1,5 @@
 <template lang="jade">
   div.article.container
-    navbar
     div.head-img
     div.header
       p.title {{ head.title }}
@@ -15,7 +14,6 @@
   import hljs from 'highlight.js'
   import jq from '$'
   import index from '../articles-index.json'
-  import navbar from './common/navbar.vue'
 
   export default {
     route: {
@@ -23,10 +21,9 @@
         return false
       }
     },
-    components: { navbar },
     data () {
       return {
-        // 文章唯一标识，以md文件名为准
+        // 文章唯一标识，以md文件名为准, title必须等于文件名
         articleId: this.$route.params.article_id
       }
     },
@@ -121,7 +118,9 @@
       background-size: cover;
     }
 
-    .header, .markdown, .duoshuo { margin: 0 50px; }
+    .header, .markdown, .duoshuo {
+      @media(max-width: $container-width) { margin: 0 20px; }
+    }
 
     .header {
       color: #555555;

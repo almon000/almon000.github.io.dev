@@ -23,14 +23,11 @@
 
 .container {
   background-color: $white;
-  min-width: 800px;
-  margin: 56px 280px;
+  margin: 56px auto;
+  width: $container-width;
 
-  @media(max-width: 1360px) {
+  @media(max-width: $container-width) {
     margin: 56px auto;
-    min-width: 0;
-    width: 800px;
+    width: auto;
   }
-
-  @media(max-width: 800px) { width: auto; }
 }
