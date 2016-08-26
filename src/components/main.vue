@@ -1,7 +1,7 @@
 <template lang="jade">
   div.main.flex-column.container
-    h2.title 最近更新
-    article-preview(v-bind:article-index="recentIndex")
+    h2.normal-title 最近更新
+    article-preview(v-bind:article-index="recentArticle")
 </template>
 
 <script>
@@ -12,14 +12,15 @@
     components: { articlePreview },
     data () {
       return {
-        recentIndex: []
+        recentArticle: []
       }
     },
     ready () {
+      // 读取最近更新的文章目录
       for (let item in index) {
         if (item > 5) break
-        this.recentIndex.push(index[item])
-        this.recentIndex.sort(function (x, y) {
+        this.recentArticle.push(index[item])
+        this.recentArticle.sort(function (x, y) {
           return new Date(x.mtime) > new Date(y.mtime)
         })
       }
@@ -30,11 +31,5 @@
 <style lang="scss" scoped>
   @import '../stylesheets/base';
   .main {
-    .title {
-      color: #555555;
-      width: 100%;
-      border-bottom: 1px solid #efeaea;
-      padding-bottom: 10px;
-    }
   }
 </style>

@@ -1,7 +1,7 @@
 <template lang="jade">
   div.tag.flex-column.container
-    h2.title Tag: {{ tag }}
-    article-preview(v-bind:article-index="tagIndex")
+    h2.normal-title Tag: {{ tag }}
+    article-preview(v-bind:article-index="tagArticle")
 </template>
 
 <script>
@@ -10,35 +10,38 @@
 
   export default {
     route: {
-      canReuse () {
-        return false
+      data (transition) {
+        transition.next({
+          tag: this.$route.params.tag_name,
+          tagArticle: this.getTagArticle(this.$route.params.tag_name)
+        })
       }
     },
     components: { articlePreview },
     data () {
       return {
-        tagIndex: [],
+        tagArticle: [],
         tag: this.$route.params.tag_name
       }
     },
-    ready () {
-      for (let item in index) {
-        if (index[item].tags.indexOf(this.tag) !== -1) this.tagIndex.push(index[item])
+    methods: {
+      // 获得当前tag的文章目录
+      getTagArticle (tag) {
+        let tagArticle = []
+        for (let item in index) {
+          if (index[item].tags.indexOf(tag) !== -1) tagArticle.push(index[item])
+        }
+        tagArticle.sort(function (x, y) {
+          return x.date < y.date
+        })
+        return tagArticle
       }
-      this.tagIndex.sort(function (x, y) {
-        return x.date < y.date
-      })
     }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../stylesheets/base';
-
-  .title {
-    color: #555555;
-    width: 100%;
-    border-bottom: 1px solid #efeaea;
-    padding-bottom: 10px;
+  .tag{
   }
 </style>

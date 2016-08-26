@@ -119,7 +119,9 @@
     }
 
     .header, .markdown, .duoshuo {
-      @media(max-width: $container-width) { margin: 0 20px; }
+      @media(max-width: 817px) {
+        margin: 0 20px;
+      }
     }
 
     .header {
@@ -129,25 +131,6 @@
       .title {
         margin-bottom: 0;
         font-size: 36px;
-      }
-
-      .info {
-
-        p, a {
-          font-size: 14px;
-          margin-right: 10px;
-          height: 20px;
-        }
-
-        .date { margin-top: 20px; }
-
-        .tag {
-          color: #555555;
-          height: 18px;
-          padding: 0 4px;
-          border: 1px solid #c3c3c3;
-          border-radius: 4px;
-        }
       }
     }
   }

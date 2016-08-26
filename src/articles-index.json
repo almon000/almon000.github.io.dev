@@ -3,22 +3,22 @@
   "title": "Hello World",
   "date": "2016-05-26",
   "class": "post",
-  "tags": ["其它", "测试2"],
+  "tags": ["其它"],
   "img": {
     "url": "http://ob54s56n6.bkt.clouddn.com/helloworld.png",
     "position": ["100%", "100%"]
   },
-  "mtime": "Tue Aug 16 2016 16:11:23 GMT+0800 (CST)"
+  "mtime": "Thu Aug 25 2016 14:12:42 GMT+0800 (CST)"
 },
 "Markdown 效果演示": {
   "title": "Markdown 效果演示",
   "date": "2016-06-28",
   "class": "post",
-  "tags": ["其它", "测试1", "测试2"],
+  "tags": ["其它"],
   "img": {
     "url": "http://ob54s56n6.bkt.clouddn.com/markdown2.png",
     "position": ["50%"]
   },
-  "mtime": "Wed Aug 24 2016 17:16:57 GMT+0800 (CST)"
+  "mtime": "Thu Aug 25 2016 14:12:35 GMT+0800 (CST)"
 }
 }

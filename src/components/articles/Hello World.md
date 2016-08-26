@@ -3,7 +3,7 @@
   "title": "Hello World",
   "date": "2016-05-26",
   "class": "post",
-  "tags": ["其它", "测试2"],
+  "tags": ["其它"],
   "img": {
     "url": "http://ob54s56n6.bkt.clouddn.com/helloworld.png",
     "position": ["100%", "100%"]

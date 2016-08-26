@@ -3,7 +3,7 @@
   "title": "Markdown 效果演示",
   "date": "2016-06-28",
   "class": "post",
-  "tags": ["其它", "测试1", "测试2"],
+  "tags": ["其它"],
   "img": {
     "url": "http://ob54s56n6.bkt.clouddn.com/markdown2.png",
     "position": ["50%"]

@@ -1,7 +1,7 @@
 <template lang="jade">
   div.post.flex-column.container
-    h2.title 文章
-    article-preview(v-bind:article-index='postIndex')
+    h2.normal-title 文章
+    article-preview(v-bind:article-index='postArticle')
 </template>
 
 <script>
@@ -12,14 +12,15 @@
     components: { articlePreview },
     data () {
       return {
-        postIndex: []
+        postArticle: []
       }
     },
     ready () {
+      // 读取属于post类目下的文章目录
       for (let item in index) {
-        if (index[item].class === 'post') this.postIndex.push(index[item])
+        if (index[item].class === 'post') this.postArticle.push(index[item])
       }
-      this.postIndex.sort(function (x, y) {
+      this.postArticle.sort(function (x, y) {
         return x.date < y.date
       })
     }
@@ -28,11 +29,6 @@
 
 <style lang="scss" scoped>
   @import '../stylesheets/base';
-
-  .title {
-    color: #555555;
-    width: 100%;
-    border-bottom: 1px solid #efeaea;
-    padding-bottom: 10px;
+  .post {
   }
 </style>

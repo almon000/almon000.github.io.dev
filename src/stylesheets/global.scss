@@ -5,14 +5,51 @@ html {
 
 body {
   background-color: $white;
+  color: $color-text-default;
 }
 
 a {
-  color: #4094c7;
   text-decoration: none;
-  &:hover { color: #075b8d; }
+  color: $color-text-default;
 }
 
 .v-link-active {
   border-bottom: 6px solid #4094c7
+}
+
+// 内容默认容器
+.container {
+  background-color: $white;
+  margin: 56px auto;
+  max-width: 800px;
+}
+
+// 默认分栏
+.normal-title {
+  margin: 20px 0;
+  border-bottom: 1px solid $color-divider;
+  padding-bottom: 10px;
+
+  @media(max-width: 817px) {
+    margin: 20px 10px;
+  }
+}
+
+// 创建日期及tag
+.info {
+  p, a {
+    font-size: 14px;
+    margin-right: 10px;
+    height: 20px;
+  }
+
+  .date { margin-top: 20px; }
+
+  .tag {
+    color: #555555;
+    height: 18px;
+    padding: 0 4px;
+    border: 1px solid #c3c3c3;
+    border-radius: 4px;
+  }
 }
