@@ -1,30 +1,24 @@
 <template lang="jade">
   div.kill-main.flex
-    div.player.flex-column(v-for="player in playerList", class="{{ 'player' + $index }}")
+    div.player.flex-column(v-for="player in playerList", id="{{ player.player }}")
       div.hero
         p.name {{ player.hero }}
         p.life 生命值： {{ player.life }}
         div.cards
-          p(v-for="card in player.cards") {{ card === 'sha' ? '杀' : 0 }}
+          a(v-for="card in player.cards" v-on:click="dam(player.player)") {{ card === 'sha' ? '杀' : 0 }}
 </template>
 <script>
+  import store from './store'
+  import damage from './actions/damage'
   export default {
     data () {
       return {
-        playerList: [
-          {
-            player: 'Tom',
-            hero: '张三',
-            life: 4,
-            cards: ['sha', 'sha', 'sha']
-          },
-          {
-            player: 'Jerry',
-            hero: '李四',
-            life: 5,
-            cards: ['sha', 'sha']
-          }
-        ]
+        playerList: store
+      }
+    },
+    methods: {
+      dam (player) {
+        damage(1, player)
       }
     }
   }
@@ -39,11 +33,11 @@
       flex-grow: 1;
     }
 
-    .player0 {
+    #Tom {
       border: 1px solid red;
     }
 
-    .player1 {
+    #Jerry {
       border: 1px solid blue;
       text-align: right;
     }
