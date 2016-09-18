@@ -20,9 +20,6 @@ router.map({
   },
   '/tag/:tag_name': {
     component: require('./components/tag')
-  },
-  '/demos/kill': {
-    component: require('./components/demos/kill/main')
   }
 })
 
