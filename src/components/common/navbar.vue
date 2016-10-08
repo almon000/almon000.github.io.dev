@@ -24,6 +24,7 @@ export default {
     top: 0;
     height: 56px;
     justify-content: flex-end;
+    background-color: white;
 
     .logo {
       font-size: 48px;

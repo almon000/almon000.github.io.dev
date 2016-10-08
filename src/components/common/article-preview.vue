@@ -4,7 +4,7 @@
         v-link="{ path: '/post/' + article.title }")
     div.flex-column.article
       a(v-link="{ path: '/post/' + article.title }")
-        h2.title {{ article.title }}
+        h3.title {{ article.title }}
       div.flex-center-align.info
         p.date {{ article.date }}
         a.tag(v-for="tag in article.tags", v-link="{ path: '/tag/' + tag }" ) {{ tag }}
