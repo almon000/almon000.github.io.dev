@@ -23,9 +23,8 @@
     height: 120px;
     margin: 10px 20px;
 
-    @media (max-width: $media-width-2) {
-      height: 60px;
-    }
+    @media (max-width: $media-width-3) { margin: 10px 32px; }
+    @media (max-width: $media-width-2) { height: 60px; }
 
     .thumb {
       width: 200px;
@@ -48,7 +47,7 @@
 
       .info {
         flex-grow: 1;
-        
+
         @media (max-width: $media-width-2) {
           height: 0;
         }
