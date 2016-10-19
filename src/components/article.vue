@@ -116,6 +116,10 @@
       height: 500px;
       background-repeat: no-repeat;
       background-size: cover;
+
+      @media (max-width: $media-width-1) {
+        height: 70vw;
+      }
     }
 
     .header, .markdown, .duoshuo {

@@ -22,6 +22,10 @@ a {
   background-color: $white;
   margin: 56px auto;
   max-width: 800px;
+
+  @media (max-width: $media-width-1) {
+    margin: 112px auto 56px auto;
+  }
 }
 
 // 默认分栏

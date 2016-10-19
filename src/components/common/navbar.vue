@@ -22,18 +22,28 @@ export default {
     left: 0;
     right: 0;
     top: 0;
-    height: 56px;
+    height: auto;
     justify-content: flex-end;
     background-color: white;
+    // z-index: 10000;
+
+    @media (max-width: $media-width-1) {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
 
     .logo {
       font-size: 48px;
-      margin-left: 20px;
+      margin-left: 32px;
       margin-right: 120px;
       width: 240px;
       height: 100%;
       cursor: pointer;
       flex-grow: 1;
+
+      @media (max-width: $media-width-1) {
+        width: 100%;
+      }
     }
 
     a {
