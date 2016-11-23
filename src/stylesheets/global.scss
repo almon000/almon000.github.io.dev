@@ -23,9 +23,8 @@ a {
   margin: 56px auto;
   max-width: 800px;
 
-  @media (max-width: $media-width-1) {
-    margin: 112px auto 56px auto;
-  }
+  @media(max-width: $media-width-3) { margin: 56px 0; }
+  @media (max-width: $media-width-1) { margin: 112px 0 56px 0; }
 }
 
 // 默认分栏
@@ -34,9 +33,8 @@ a {
   border-bottom: 1px solid $color-divider;
   padding-bottom: 10px;
 
-  @media(max-width: 817px) {
-    margin: 20px 10px;
-  }
+  @media(max-width: $media-width-3) { margin: 20px 30px; }
+
 }
 
 // 创建日期及tag
