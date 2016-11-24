@@ -5,6 +5,7 @@
 
 <script>
   import { closeMask } from '../../vuex/actions'
+  import jq from '$'
 
   export default {
     data () {
@@ -18,6 +19,17 @@
       actions: {
         closeMask
       }
+    },
+    ready () {
+      jq('.mask').on('wheel', function ({ originalEvent: event }) {
+        let imgWidth = Number(jq('.mask img').css('width').split('px')[0])
+        let width = window.screen.width
+        console.log(imgWidth * 100 / width)
+        if (event.deltaY === 100) {
+          if (imgWidth * 100 / width > 20) jq('.mask img').css({ width: '-=40' })
+          else jq('.mask img').css({ width: '30%' })
+        } else jq('.mask img').css({ width: '+=40' })
+      })
     }
   }
 </script>

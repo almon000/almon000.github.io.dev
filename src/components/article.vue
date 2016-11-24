@@ -107,7 +107,6 @@
       })
       // 文章中图片放大查看
       jq('.markdown img').click(function () {
-        console.log(this)
         el.openMask({ type: 'image', imgUrl: this.src })
       })
     }
