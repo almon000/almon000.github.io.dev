@@ -25,7 +25,7 @@ export default {
     height: auto;
     justify-content: flex-end;
     background-color: white;
-    // z-index: 10000;
+    z-index: 99;
 
     @media (max-width: $media-width-1) {
       flex-wrap: wrap;

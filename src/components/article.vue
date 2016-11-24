@@ -14,6 +14,7 @@
   import hljs from 'highlight.js'
   import jq from '$'
   import index from '../articles-index.json'
+  import { openMask } from '../vuex/actions'
 
   export default {
     route: {
@@ -34,6 +35,11 @@
       },
       head () {
         return index[this.articleId]
+      }
+    },
+    vuex: {
+      actions: {
+        openMask
       }
     },
     methods: {
@@ -98,6 +104,11 @@
             })
           }
         })
+      })
+      // 文章中图片放大查看
+      jq('.markdown img').click(function () {
+        console.log(this)
+        el.openMask({ type: 'image', imgUrl: this.src })
       })
     }
   }

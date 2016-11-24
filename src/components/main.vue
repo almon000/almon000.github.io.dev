@@ -20,10 +20,10 @@
       for (let item in index) {
         if (item > 5) break
         this.recentArticle.push(index[item])
-        this.recentArticle.sort(function (x, y) {
-          return new Date(x.mtime) > new Date(y.mtime)
-        })
       }
+      this.recentArticle.sort(function (x, y) {
+        return new Date(x.mtime) < new Date(y.mtime)
+      })
     }
   }
 </script>
