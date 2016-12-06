@@ -22,12 +22,10 @@
     },
     ready () {
       jq('.mask').on('wheel', function ({ originalEvent: event }) {
-        let imgWidth = Number(jq('.mask img').css('width').split('px')[0])
         let width = window.screen.width
-        console.log(imgWidth * 100 / width)
-        if (event.deltaY === 100) {
-          if (imgWidth * 100 / width > 20) jq('.mask img').css({ width: '-=40' })
-          else jq('.mask img').css({ width: '30%' })
+        let imgWidth = Number(jq('.mask img').css('width').split('px')[0])
+        if (event.deltaY > 0) {
+          if (imgWidth * 100 / width > 30) jq('.mask img').css({ width: '-=40' })
         } else jq('.mask img').css({ width: '+=40' })
       })
     }

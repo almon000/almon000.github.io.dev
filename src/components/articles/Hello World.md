@@ -5,7 +5,7 @@
   "class": "post",
   "tags": ["其它"],
   "img": {
-    "url": "http://ob54s56n6.bkt.clouddn.com/helloworld.png",
+    "url": "http://ob54s56n6.bkt.clouddn.com/helloworld2.png",
     "position": ["100%", "100%"]
   }
 }
